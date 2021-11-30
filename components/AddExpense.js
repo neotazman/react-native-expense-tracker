@@ -1,22 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react';
+import { View, Text, TextInput, StyleSheet } from 'react-native'
 
-export default function AddExpense() {
 
-    const initialState = {
-        expenseName: '',
-        expenseAmount: 0,
-    }
+export default function AddExpense({ state, handleInputChange }) {
 
-    const [state, setState] = useState(initialState)
-
-    const handleInputChange = (e) => {
-        setState({ ...state, [e.target.name]: e.target.value })
-    }
+    const { expenseName, expenseAmount } = state
 
     return (
-        <div>
-            <input name="expenseName" value={state.expenseName} onChange={handleInputChange} />
-            <input name="expenseAmount" value={state.expenseAmount} onChange={handleInputChange} />
-        </div>
+        <View>
+            <TextInput name="expenseName" placeholder="Name of Expense" value={expenseName} onChangeText={handleInputChange} /><Text>{expenseName}</Text>
+            <TextInput name="expenseAmount" placeholder='Amount of Expense' value={expenseAmount} onChangeText={handleInputChange} keyboardType='numeric' /><Text>{expenseAmount}</Text>
+        </View>
     )
 }

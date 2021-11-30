@@ -8,15 +8,14 @@ export default function ExpenseTracker() {
 
     const initialState = { //needs more values
         expenseName: '', //a string
-        expenseAmount: 0, //a number
+        expenseAmount: '', //a number
     }
 
     const [state, setState] = useState(initialState)
 
     const handleInputChange = (e) => { //when the input changes
-        e.preventDefault()
-        console.log(e)
-        setState( { ...state, [e.target.name]: e.target.value } )
+        //e.preventDefault()
+        setState( { ...state, [e.target.name]: e.target.value } ) // e is not being read correctly by the react native component. More research is required
     }
 
     return (
